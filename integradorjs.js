@@ -4,6 +4,7 @@ let listaProductos = [
     [3, "Smart TV Philips 43'", 190, true],
     [4, "Sony PS 7              ", 215, true],
 ];
+<<<<<<< HEAD
 
 let idProducto = "";
 idProducto= Number(idProducto);
@@ -66,31 +67,24 @@ mostrarCarrito();
     for (let i = 0; i < listaProductos.length; i++) {
         lista += `
         ${listaProductos[i][0]} ${listaProductos[i][1]}`
+=======
+
+const mostrarProductos = () => {
+    for (let i = 0; listaProductos.length; i++) {
+        return listaProductos
+>>>>>>> parent of bc321fa... segunda parte
     }
-    return alert(lista)
 }
-
-mostrarProductos()
-
-
-
-const agregarProducto = () => {
-    lista.push()
-}
-
-
+console.log(listaProductos)
 
 
 
 prompt(`Bienvenidos a la tiendita de ElectrocutAdas
-
 Que desea hacer?
-
-✚ [AGREGAR] un producto
-📄 [MOSTRAR] compra
-✂ [ELIMINAR] un producto del carrito
+✚[AGREGAR] un producto
+📄[MOSTRAR] compra
+✂[ELIMINAR] un producto del carrito
 🗑️ [VACIAR] carrito
 🚪 [CANCELAR] compra
 ✔️ [CONFIRMAR] compra`
 )
-*/
