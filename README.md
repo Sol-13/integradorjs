@@ -2,7 +2,7 @@
 
 ### Integrantes:   
 -Soledad Álvarez  
--Cecilia Morales 
+-Cecilia Morales   
 -María Ivana Croxcatto  
 -Guadalupe Goicochea  
 
