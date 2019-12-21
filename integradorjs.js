@@ -1,7 +1,7 @@
 /*--------------------------------------------------------------------------------------------------------------------------
            VARIABLES
 ---------------------------------------------------------------------------------------------------------------------------*/
-
+let = operacion = ""; // la operación que elige el usuario
 let listaProductos = [
     [1, "Notebook Lenovo S400", 100, true],
     [2, "Celular Motorola G5 ", 135, false],
@@ -19,6 +19,7 @@ let precio = 0; // precio del producto, en la lista o en el carrito
 let descuento = false; // descuento del producto, en la lista o en el carrito
 let cantidad = 0; // cantidad del producto, en el carrito
 const listaCarrito = []; // array que contiene los productos (lista de productoEnCarrito) que el usuario quiere comprar
+let repetir = ""; // guarda la opción de repetir o no en cada operación
 
 /*--------------------------------------------------------------------------------------------------------------------------
            FUNCIONES
@@ -77,42 +78,73 @@ const mostrarCarrito = () => {
 /*--------------------------------------------------------------------------------------------------------------------------
            CÓDIGO
 ---------------------------------------------------------------------------------------------------------------------------*/
-agregarProducto();
-console.log(listaCarrito);
-mostrarCarrito();
-
-
-/*const mostrarProductos = () => {
-    let lista = "";
-
-    for (let i = 0; i < listaProductos.length; i++) {
-        lista += `
-        ${listaProductos[i][0]} ${listaProductos[i][1]}`
-    }
-    return alert(lista)
-}
-
-mostrarProductos()
-
-
-
-const agregarProducto = () => {
-    lista.push()
-}
-
-
-
-
-
-prompt(`Bienvenidos a la tiendita de ElectrocutAdas
-
-Que desea hacer?
-
+do {
+operacion = prompt(`Bienvenidos a la tiendita de ElectrocutAdas. ¿Qué desea hacer?
+-----------------------------------------------
 ✚ [AGREGAR] un producto
 📄 [MOSTRAR] compra
 ✂ [ELIMINAR] un producto del carrito
-🗑️ [VACIAR] carrito
-🚪 [CANCELAR] compra
-✔️ [CONFIRMAR] compra`
-)
-*/
+🗑️  [VACIAR] carrito
+🚪  [CANCELAR] compra
+✔️ [CONFIRMAR] compra
+✖️ [SALIR] del menú`);
+
+    switch (operacion) {
+        case "AGREGAR":
+            do {
+                agregarProducto();
+            
+        repetir = prompt("¿Querés repetir la operación? [SÍ/NO]");
+        } while (repetir !== "NO");
+        break;
+
+        case "MOSTRAR":
+            do {
+                mostrarCarrito();
+
+            
+        repetir = prompt("¿Querés repetir la operación? [SÍ/NO]");
+        } while (repetir !== "NO");
+        break;
+
+        case "ELIMINAR":
+            do {
+
+            
+        repetir = prompt("¿Querés repetir la operación? [SÍ/NO]");
+        } while (repetir !== "NO");
+        break;
+
+        case "VACIAR":
+            do {
+
+            
+        repetir = prompt("¿Querés repetir la operación? [SÍ/NO]");
+        } while (repetir !== "NO");
+        break;
+
+        case "CANCELAR":
+            do {
+
+            
+        repetir = prompt("¿Querés repetir la operación? [SÍ/NO]");
+        } while (repetir !== "NO");
+        break;
+
+        case "CONFIRMAR":
+            do {
+
+            
+        repetir = prompt("¿Querés repetir la operación? [SÍ/NO]");
+        } while (repetir !== "NO");
+        break;
+
+        default: 
+        break;
+    }
+
+
+} while (operacion !== "SALIR");
+
+
+//https://github.com/Ada-IT/bootcamp-frontend/blob/master/integradores/Integrador%203.%20Funciones.md
