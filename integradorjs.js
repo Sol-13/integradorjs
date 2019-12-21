@@ -1,3 +1,7 @@
+/*--------------------------------------------------------------------------------------------------------------------------
+           VARIABLES
+---------------------------------------------------------------------------------------------------------------------------*/
+
 let listaProductos = [
     [1, "Notebook Lenovo S400", 100, true],
     [2, "Celular Motorola G5 ", 135, false],
@@ -5,22 +9,36 @@ let listaProductos = [
     [4, "Sony PS 7              ", 215, true],
 ];
 
-let idProducto = "";
+let idProducto = ""; //el producto que elige el usuario para agregarlo al carrito
 idProducto= Number(idProducto);
-let vistaCarrito = "";
-let productoEnCarrito =[5];
-let id = 0;
-let producto = "";
-let precio = 0;
-let descuento = false;
-let cantidad = 0;
-const listaCarrito = [];
+let vistaCarrito = ""; // string para acumular el contenido del carrito y que se muestre todo junto en el alert
+let productoEnCarrito =[5]; // array de cada producto que va en el carrito, con 5 índices para poder agregar cantidad en el índice 5
+let id = 0; // id del producto, en la lista o en el carrito
+let producto = ""; // descripción del producto, en la lista o en el carrito
+let precio = 0; // precio del producto, en la lista o en el carrito
+let descuento = false; // descuento del producto, en la lista o en el carrito
+let cantidad = 0; // cantidad del producto, en el carrito
+const listaCarrito = []; // array que contiene los productos (lista de productoEnCarrito) que el usuario quiere comprar
+
+/*--------------------------------------------------------------------------------------------------------------------------
+           FUNCIONES
+---------------------------------------------------------------------------------------------------------------------------*/
 
 const agregarProducto = (productoElegido) => {    
         productoElegido = elegirProducto();
         for (let i = 0; i < listaProductos.length; i++) {
             if (listaProductos[i][0] == productoElegido) {
-                productoEnCarrito = [listaProductos[i][0], listaProductos[i][1], listaProductos[i][2], listaProductos[i][3], 1]
+                let j = 0;
+                do {
+                    if (listaCarrito[j] == productoEnCarrito) {
+                        cantidad = cantidad + 1;
+                    } else {
+                        cantidad = 1;
+                    }
+                    j++;
+                }
+                while (j < listaCarrito.length);
+                productoEnCarrito = [listaProductos[i][0], listaProductos[i][1], listaProductos[i][2], listaProductos[i][3], cantidad];
                 listaCarrito.push(productoEnCarrito);
             }
         }
@@ -55,6 +73,10 @@ const mostrarCarrito = () => {
     ${vistaCarrito}`);
 }
 
+
+/*--------------------------------------------------------------------------------------------------------------------------
+           CÓDIGO
+---------------------------------------------------------------------------------------------------------------------------*/
 agregarProducto();
 console.log(listaCarrito);
 mostrarCarrito();
