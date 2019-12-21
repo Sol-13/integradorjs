@@ -19,7 +19,7 @@ let precio = 0; // precio del producto, en la lista o en el carrito
 let descuento = false; // descuento del producto, en la lista o en el carrito
 let cantidad = 0; // cantidad del producto, en el carrito
 const listaCarrito = []; // array que contiene los productos (lista de productoEnCarrito) que el usuario quiere comprar
-let repetir = ""; // guarda la opción de repetir o no en cada operación
+// let repetir = ""; // guarda la opción de repetir o no en cada operación
 
 /*--------------------------------------------------------------------------------------------------------------------------
            FUNCIONES
@@ -75,6 +75,11 @@ const mostrarCarrito = () => {
 }
 
 
+const repetir = () => {
+    opcionElegida = prompt("¿Querés repetir la operación? [SÍ/NO]");
+    return opcionElegida;
+}
+
 /*--------------------------------------------------------------------------------------------------------------------------
            CÓDIGO
 ---------------------------------------------------------------------------------------------------------------------------*/
@@ -94,8 +99,7 @@ operacion = prompt(`Bienvenidos a la tiendita de ElectrocutAdas. ¿Qué desea ha
             do {
                 agregarProducto();
             
-        repetir = prompt("¿Querés repetir la operación? [SÍ/NO]");
-        } while (repetir !== "NO");
+        } while (repetir() !== "NO");
         break;
 
         case "MOSTRAR":
@@ -103,40 +107,40 @@ operacion = prompt(`Bienvenidos a la tiendita de ElectrocutAdas. ¿Qué desea ha
                 mostrarCarrito();
 
             
-        repetir = prompt("¿Querés repetir la operación? [SÍ/NO]");
-        } while (repetir !== "NO");
+        
+        } while (repetir() !== "NO");
         break;
 
         case "ELIMINAR":
             do {
 
             
-        repetir = prompt("¿Querés repetir la operación? [SÍ/NO]");
-        } while (repetir !== "NO");
+        
+        } while (repetir() !== "NO");
         break;
 
         case "VACIAR":
             do {
 
             
-        repetir = prompt("¿Querés repetir la operación? [SÍ/NO]");
-        } while (repetir !== "NO");
+        
+        } while (repetir() !== "NO");
         break;
 
         case "CANCELAR":
             do {
 
             
-        repetir = prompt("¿Querés repetir la operación? [SÍ/NO]");
-        } while (repetir !== "NO");
+        
+        } while (repetir() !== "NO");
         break;
 
         case "CONFIRMAR":
             do {
 
             
-        repetir = prompt("¿Querés repetir la operación? [SÍ/NO]");
-        } while (repetir !== "NO");
+        
+        } while (repetir() !== "NO");
         break;
 
         default: 
