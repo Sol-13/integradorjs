@@ -145,14 +145,11 @@ operacion = prompt(`Bienvenidos a la tiendita de ElectrocutAdas. ¿Qué desea ha
 
     switch (operacion) {
         case "AGREGAR":
+            do {
             mostrarProducto();
             agregarProducto();
-            if (repetir() !== "NO") {
-                mostrarProducto();
-                agregarProducto();
-            }
             
-            
+        } while (repetir() !== "NO");    
         
         break;
 
