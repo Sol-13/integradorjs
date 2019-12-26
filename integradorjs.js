@@ -3,10 +3,10 @@
 ---------------------------------------------------------------------------------------------------------------------------*/
 let = operacion = ""; // la operación que elige el usuario
 let listaProductos = [
-    [1, "Notebook Lenovo S400", 100, true],
-    [2, "Celular Motorola G5 ", 135, false],
-    [3, "Smart TV Philips 43'", 190, true],
-    [4, "Sony PS 7", 215, true],
+    [1, "Notebook Lenobo S400", 100, true],
+    [2, "Celular Notorola G5", 135, false],
+    [3, "Smart TV Filips 43'", 190, true],
+    [4, "Sorny PS 7", 215, true],
 ];
 
 let idProducto = ""; //el producto que elige el usuario para agregarlo al carrito
@@ -18,11 +18,12 @@ let id = 0; // id del producto, en la lista o en el carrito
 let producto = ""; // descripción del producto, en la lista o en el carrito
 let precio = 0; // precio del producto, en la lista o en el carrito
 let descuento = false; // descuento del producto, en la lista o en el carrito
-let cantidad = 0; // cantidad del producto, en el carrito
+let cantidadUnidadesProducto = 0; // cantidad del producto, en el carrito
 const listaCarrito = []; // array que contiene los productos (lista de productoEnCarrito) que el usuario quiere comprar
 // let repetir = ""; // guarda la opción de repetir o no en cada operación
 let nuevaListaCarrito = [];
 let newNuevaListaCarrito = [];
+// let cantidadUnidadesProducto = 0;
 
 
 
@@ -50,11 +51,13 @@ const elegirProducto = () => {
  idProducto = prompt(`Coloque el numero de producto`)
     idProducto = Number(idProducto);
     if ((idProducto >= 1 && idProducto <= listaProductos.length)) {
-    alert(`El producto elegido es: 
+        alert(`El producto elegido es: 
          id: ${listaProductos[idProducto-1][0]}
                 || producto:${listaProductos[idProducto-1][1]} 
                 || precio: $${listaProductos[idProducto-1][2]}
                 || descuento: ${listaProductos[idProducto-1][3]}`);
+        cantidadUnidadesProducto = prompt(`¿Cuántas unidades quiere llevar?`)
+        cantidadUnidadesProducto = Number(cantidadUnidadesProducto);
     } else {
         alert("El ID que ingresó no es válido.");
     }
@@ -67,13 +70,13 @@ const agregarProducto = (productoElegido) => {
     productoElegido = elegirProducto();
         for(let i = 0; i <listaCarrito.length; i++){
             if (listaCarrito[i][0] === listaProductos[productoElegido][0]) {
-                listaCarrito[i][4] ++;
+                listaCarrito[i][4] = listaCarrito[i][4]+cantidadUnidadesProducto;
                 console.log(listaCarrito);
                 return listaCarrito;
             }
         }
 
-    productoEnCarrito = [listaProductos[productoElegido][0], listaProductos[productoElegido][1], listaProductos[productoElegido][2], listaProductos[productoElegido][3], cantidad +1];
+    productoEnCarrito = [listaProductos[productoElegido][0], listaProductos[productoElegido][1], listaProductos[productoElegido][2], listaProductos[productoElegido][3], cantidadUnidadesProducto];
     listaCarrito.push(productoEnCarrito);
     console.log(listaCarrito);
     return listaCarrito;
