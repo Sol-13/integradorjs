@@ -13,7 +13,7 @@ let idProducto = ""; //el producto que elige el usuario para agregarlo al carrit
 idProducto= Number(idProducto);
 let vistaListaProductos = ""; // string para acumular la lista de productos y mostrarla toda junta
 let vistaCarrito = ""; // string para acumular el contenido del carrito y que se muestre todo junto en el alert
-let productoEnCarrito =[5]; // array de cada producto que va en el carrito, con 5 índices para poder agregar cantidad en el índice 5
+let productoEnCarrito =[]; // array de cada producto que va en el carrito, con 5 índices para poder agregar cantidad en el índice 5
 let id = 0; // id del producto, en la lista o en el carrito
 let producto = ""; // descripción del producto, en la lista o en el carrito
 let precio = 0; // precio del producto, en la lista o en el carrito
@@ -32,6 +32,7 @@ let newNuevaListaCarrito = [];
 
 
 const mostrarProducto = () => {
+    vistaListaProductos ="";
     for (let i=0; i < listaProductos.length; i++) {
         vistaListaProductos += `
         id: ${listaProductos[i][0]}
@@ -57,61 +58,33 @@ const elegirProducto = () => {
     } else {
         alert("El ID que ingresó no es válido.");
     }
-    return idProducto;
+    return idProducto-1;
 }
 
-    const agregarProducto = (productoElegido) => {       // HAY QUE REPETIR ELEGIR PRODUCTO Y CUANDO ESTÉ LISTO, RECIÉN AGREGAR, SINO REPITE LOS PRODUCTOS
-        productoElegido = elegirProducto();
-        productoEnCarrito = [listaProductos[productoElegido][0], listaProductos[productoElegido][1], listaProductos[productoElegido][2], listaProductos[productoElegido][3], cantidad+1];
-        listaCarrito.push(productoEnCarrito);
-        nuevaListaCarrito = listaCarrito.slice();
-        console.log(listaCarrito);
-        return listaCarrito;
-        
+    
+    
+const agregarProducto = (productoElegido) => {
+    productoElegido = elegirProducto();
+        for(let i = 0; i <listaCarrito.length; i++){
+            if (listaCarrito[i][0] === listaProductos[productoElegido][0]) {
+                listaCarrito[i][4] ++;
+                console.log(listaCarrito);
+                return listaCarrito;
+            }
         }
 
+    productoEnCarrito = [listaProductos[productoElegido][0], listaProductos[productoElegido][1], listaProductos[productoElegido][2], listaProductos[productoElegido][3], cantidad +1];
+    listaCarrito.push(productoEnCarrito);
+    console.log(listaCarrito);
+    return listaCarrito;
 
-
-
-
-
-        // for (let i = 0; i < listaProductos.length; i++) {
-        //     if (listaProductos[i][0] == productoElegido) {
-        //        productoEnCarrito = [listaProductos[i][0], listaProductos[i][1], listaProductos[i][2], listaProductos[i][3], cantidad];
-        //        listaCarrito.push(productoEnCarrito);
-        //        for (j = 0; j < listaCarrito.length; j++) {
-        //            if (listaCarrito[j] == productoEnCarrito) {
-        //                 cantidad = cantidad + 1;
-        //             } else {
-        //                 cantidad = 1;
-        //             }
-        //        } 
-                
-                
-                // let j = 0;
-                // do {
-                //     if (listaCarrito[j] == productoEnCarrito) {
-                //         cantidad = cantidad + 1;
-                //     } else {
-                //         cantidad = 1;
-                //     }
-                //     j++;
-                // }
-                // while (j < listaCarrito.length);
-                // productoEnCarrito = [listaProductos[i][0], listaProductos[i][1], listaProductos[i][2], listaProductos[i][3], cantidad];
-                // listaCarrito.push(productoEnCarrito);
-//             }
-//         }
-//     return listaCarrito;
-// }
-
-
+    }
 
 
 
 
 const mostrarCarrito = (listaCarrito) => {
-
+    vistaCarrito = "";
     for (let i = 0; i < listaCarrito.length; i++) {
         
         vistaCarrito += `
@@ -125,7 +98,7 @@ const mostrarCarrito = (listaCarrito) => {
 
 
 const repetir = () => {
-    opcionElegida = prompt("¿Quuiere repetir la operación? [SÍ/NO]");
+    opcionElegida = prompt("¿Quiere repetir la operación? [SÍ/NO]");
     return opcionElegida;
 }
 
@@ -150,14 +123,10 @@ operacion = prompt(`Bienvenidos a la tiendita de ElectrocutAdas. ¿Qué desea ha
             agregarProducto();
             
         } while (repetir() !== "NO");    
-        
         break;
 
         case "MOSTRAR":
-            newNuevaListaCarrito = nuevaListaCarrito.slice();
-            mostrarCarrito(nuevaListaCarrito);
-            console.log(nuevaListaCarrito);
-
+            mostrarCarrito(listaCarrito);
         break;
 
         case "ELIMINAR":
