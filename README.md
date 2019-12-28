@@ -6,4 +6,5 @@
 -María Ivana Croxcatto  
 -Guadalupe Goicochea  
 
-Live: https://ma-ivana.github.io/integradorjs/index.html
+Probar: https://ma-ivana.github.io/integradorjs/index.html  
+Código de descuento: ADA1234
