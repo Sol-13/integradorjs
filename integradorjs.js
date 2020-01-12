@@ -1,3 +1,10 @@
+// Excelente trabajo, gran uso de los conceptos vistos!
+// Hay un error en confirmar compra, por el cual el precio queda mal cuando hay
+// productos con descuento
+// Dado que buena parte del trabajo lo hizo Ivi, propongo al resto que traten de encontrar ese error
+// y corregirlo para una segunda entrega grupal
+// Cualquier cosa me escriben
+
 /*--------------------------------------------------------------------------------------------------------------------------
            VARIABLES
 ---------------------------------------------------------------------------------------------------------------------------*/
@@ -10,7 +17,11 @@ let listaProductos = [
 ];
 
 let idProducto = ""; //el producto que elige el usuario para agregarlo al carrito
+
+// Ojo con esto: queda como 0 y luego se reemplaza por el string que elija el usuario. No tiene ninguna utilidad. 
 idProducto= Number(idProducto);
+
+
 let vistaListaProductos = ""; // string para acumular la lista de productos y mostrarla toda junta
 let vistaCarrito = ""; // string para acumular el contenido del carrito y que se muestre todo junto en el alert
 let productoEnCarrito =[]; // array de cada producto que va en el carrito, con 5 índices para poder agregar cantidad en el índice 5
@@ -30,8 +41,13 @@ let opcionVaciar = ""; // string para guardar la opción elegida por el usuario 
 let opcionCancelar = ""; // string para guardar la opción elegida por el usuario (cancelar compra o no)
 let poseeCodigoDescuento = ""; // string para guardar si el usuario tiene código de descuento o no
 let codigoDescuentoUsuario = ""; // string para guardar el código de descuento que tenga el usuario
+
+// deberia ser const 
 let codigoDescuentoDado = "ADA1234";
+
+// deberia ser const 
 let porcentajeDescuento = 10;
+
 let opcionConfirmarCompra = ""; // // string para guardar la opción elegida por el usuario (confirmar compra o no)
 let productoValido = 0; // guarda si el id elegido es un producto que está en el carrito o no
 let cantidad = 0; // placeholder de cantidad, índice 4 en el producto en carrito
@@ -86,6 +102,8 @@ const elegirProducto = () => {
 }
  
 
+// excelente esta funcion 
+
 const agregarProducto = (productoElegido) => {
     productoElegido = elegirProducto();
     cantidadUnidadesProducto = elegirCantidadProducto();
@@ -99,6 +117,8 @@ const agregarProducto = (productoElegido) => {
 
     productoEnCarrito = [listaProductos[productoElegido][0], listaProductos[productoElegido][1], listaProductos[productoElegido][2], listaProductos[productoElegido][3], cantidadUnidadesProducto];
     listaCarrito.push(productoEnCarrito);
+
+// recuerden siempre borrar los console log
     console.log(listaCarrito);
     return listaCarrito;
 
